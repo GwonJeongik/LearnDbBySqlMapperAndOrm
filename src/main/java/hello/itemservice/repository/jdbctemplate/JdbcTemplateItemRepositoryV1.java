@@ -109,8 +109,10 @@ public class JdbcTemplateItemRepositoryV1 implements ItemRepository {
             }
 
             sql += " price <= ?";
+            param.add(maxPrice);
         }
 
+        log.info("sql={}", sql);
         //결과 값이 1개 이상일 때 -> template.query()
         return template.query(sql, itemRowMapper(), param.toArray());
     }
