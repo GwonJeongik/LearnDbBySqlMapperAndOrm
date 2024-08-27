@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @RequiredArgsConstructor
 public class MyBatisConfig {
 
+    // MyBatis 스프링 연동 모듈 -> proxy ItemMapper 객체 동적으로 생성 -> 스프링 빈으로 등록
     private final ItemMapper itemMapper;
 
     @Bean
@@ -24,5 +25,4 @@ public class MyBatisConfig {
     public ItemRepository itemRepository() {
         return new MyBatisItemRepository(itemMapper);
     }
-
 }
