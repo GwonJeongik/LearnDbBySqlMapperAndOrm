@@ -10,9 +10,9 @@
 
     <update id="update">
         update item
-        set item_name=#{updateParam.ItemName()},
+        set item_name=#{updateParam.itemName},
             price=#{updateParam.price},
-            quantity=#{update.Param.quantity}
+            quantity=#{updateParam.quantity}
         where id = #{id}
     </update>
 
@@ -23,7 +23,7 @@
     </select>
 
     <select id="findAll" resultType="Item">
-        selece id, item_name, price, quantity
+        select id, item_name, price, quantity
         from item
         <where>
             <if test="itemName != null and itemName != ''">
@@ -31,7 +31,7 @@
             </if>
 
             <if test="maxPrice != null">
-                and maxPrice &lt;= MaxPrice
+                and price &lt;= #{maxPrice}
             </if>
         </where>
     </select>
