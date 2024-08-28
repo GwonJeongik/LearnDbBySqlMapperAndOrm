@@ -16,7 +16,6 @@ public class MyBatisItemRepository implements ItemRepository {
 
     private final ItemMapper itemMapper;
 
-
     @Override
     public Item save(Item item) {
         itemMapper.save(item);
