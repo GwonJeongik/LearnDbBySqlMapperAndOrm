@@ -2,6 +2,8 @@ package hello.itemservice.config;
 
 import hello.itemservice.repository.ItemRepository;
 import hello.itemservice.repository.jpa.JpaItemRepositoryV1;
+import hello.itemservice.repository.jpa.JpaItemRepositoryV2;
+import hello.itemservice.repository.jpa.SpringDataJpaItemRepository;
 import hello.itemservice.service.ItemService;
 import hello.itemservice.service.ItemServiceV1;
 import jakarta.persistence.EntityManager;
@@ -11,10 +13,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @RequiredArgsConstructor
-public class JpaConfig {
+public class SpringDataJpaConfig {
 
-    // MyBatis 스프링 연동 모듈 -> proxy ItemMapper 객체 동적으로 생성 -> 스프링 빈으로 등록
-    private final EntityManager em;
+    private final SpringDataJpaItemRepository repository;
 
     @Bean
     public ItemService itemService() {
@@ -23,6 +24,6 @@ public class JpaConfig {
 
     @Bean
     public ItemRepository itemRepository() {
-        return new JpaItemRepositoryV1(em);
+        return new JpaItemRepositoryV2(repository);
     }
 }

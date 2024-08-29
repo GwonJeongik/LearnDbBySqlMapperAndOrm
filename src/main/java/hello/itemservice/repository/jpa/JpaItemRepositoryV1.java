@@ -17,10 +17,10 @@ import java.util.Optional;
 
 @Slf4j
 @Repository
-// JPA는 트랜잭션 안에서 활동한다.
+//JPA는 트랜잭션 안에서 활동한다.
 @Transactional
 @RequiredArgsConstructor
-public class JpaItemRepository implements ItemRepository {
+public class JpaItemRepositoryV1 implements ItemRepository {
 
     //JPA 사용에 필요한 EntityManager
     private final EntityManager em;
